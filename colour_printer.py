@@ -17,7 +17,6 @@
 #   https://replit.com/talk/learn/ANSI-Escape-Codes-in-Python/22803
 #-------------------------------------------------------------------------------
 
-import os
 
 # Foreground colours:
 class fg:

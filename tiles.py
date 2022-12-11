@@ -12,8 +12,18 @@ class Tile:
         self.occupying_entity = None
         
     def __str__(self):
-        return (f"{fg.rgb(self.colour[0], self.colour[1], self.colour[2])}" +
-                f"{self.symbol}{util.RESET}")
+        if self.occupying_entity:
+            return (
+                f"{fg.rgb(self.occupying_entity.colour[0], self.occupying_entity.colour[1], self.occupying_entity.colour[2])}" + 
+                f"{self.occupying_entity.symbol}{util.RESET}"
+            )
+        else:
+            return (
+                f"{fg.rgb(self.colour[0], self.colour[1], self.colour[2])}" + 
+                f"{self.symbol}{util.RESET}"
+            )
+
+
 
     def clone(self):
         '''Returns new instances of tile with same attributes.'''
@@ -40,16 +50,17 @@ class Tileset:
         self.filename = filename
         with open(self.filename, 'r') as tile_file:
             for line in tile_file:
-                line = line.split('|')
-                tile = Tile(
-                    line[0],
-                    line[1].split(','),
-                    line[2],
-                    True if line[3] == 'True' else False,
-                    int(line[4]),
-                    line[5]
-                )
-                self.tiles.append(tile)
+                if line != '\n' and line.split()[0] != '//': # Allows for blank lines in tile files for readability.
+                    line = line.split('|')
+                    tile = Tile(
+                        line[0],
+                        tuple(map(int, line[1].split(','))),
+                        line[2],
+                        True if line[3] == 'True' else False,
+                        int(line[4]),
+                        line[5]
+                    )
+                    self.tiles.append(tile)
 
     def print_set(self):
         print(f"\n\tTileset: {self.filename.split('_')[0]}\n")
@@ -81,33 +92,6 @@ class Tileset:
 
 if __name__ == '__main__':
 
-    tileset = Tileset("default_tiles.txt")
+    tileset = Tileset(".\\resources\\default_tiles.txt")
     tileset.print_set()
 
-    shore_sand = Tile(
-        '%',
-        (244, 164, 96),
-        'shore sand',
-        True,
-        0,
-        'Rough sand littered with sticks and pebbles.'
-    )
-    tileset.add_tile(shore_sand)
-
-    oak_tree = Tile(
-        '&',
-        (19, 78, 19),
-        'oak tree',
-        False,
-        0,
-        'A sturdy oak tree.'
-    )
-    tileset.add_tile(oak_tree)
-    tileset.print_set()
-
-    map_1 = []
-    for i in range(10):
-        map_1.append(oak_tree.clone())
-    print(*map_1, sep='\n')
-    map_1[3].colour = (0,255,0)
-    print(*map_1, sep='\n')

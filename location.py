@@ -1,53 +1,39 @@
 import tiles
-tileset = tiles.Tileset('default_tiles.txt')
+from PIL import Image
+
+import os
+
+tileset = tiles.Tileset('.\\resources\\default_tiles.txt')
 
 class Location:
-    def __init__(self, name, filename):
-        self.name = name
-        self.local_tiles = []
-        with open(filename, 'r') as location_data:
-            for line in location_data:
-                line = list(map(lambda t: t.strip(), line.split('|')))
-                tile_line = []
-                for tilename in line:
+    def __init__(self, map_file):
+        self.name = map_file.split('.')[0]
+        print(f'Location: {self.name}')
+        self.map_tiles = []
+
+        with Image.open(map_file, 'r') as map_data:
+            width, height = map_data.size
+            os.system(f'mode con:cols={width + 8}')
+
+            rgb_values = list(map_data.getdata())
+            for i in range(height):
+                row = []
+                for j in range(width):
+                    rgb_value = rgb_values.pop(0)
                     for tile in tileset.tiles:
-                        if tilename == tile.name:
-                            tile_line.append(tile.clone())
-                self.local_tiles.append(tile_line)
-
+                        if rgb_value == tile.colour:
+                            row.append(tile.clone())
+                self.map_tiles.append(row)
+            
     def __str__(self):
-        rows = []
-        for raw_row in self.local_tiles:
-            row = '\n' + ''.join(list(map(lambda t: str(t), raw_row)))
-            rows.append(row)
-        return ''.join(rows)
-
-def blank_location(name, tile, size):
-    with open(f".\\locations\\{name}.txt", 'a') as new_location:
-        location = []
-        for i in range(size[0]):
-            row = []
-            for j in range(size[1]):
-                row.append(f'{tile.name}')
-            row = '|'.join(row)
-            location.append(row)
-        location = '\n'.join(location)
-        new_location.write(location)
-    return Location(name, f'.\\locations\\{name}.txt')
-
-def insert_structure(structure_file, insert_at):
-
-
-
-
-
-
-    
-    return
+        rows = ""
+        for row in self.map_tiles:
+            r = []
+            for t in row:
+                r.append(str(t))
+            rows += '\n' + ''.join(r)
+        return rows
 
 if __name__ == '__main__':
-    test_map = Location('Test Map', '.\\locations\\test_level.txt')
+    test_map = Location('Test Map', '.\\locations\\test_map.png')
     print(test_map)
-
-    lvl_1 = blank_location('level_1', tileset.tiles[1], (32, 96))
-    print(lvl_1)
