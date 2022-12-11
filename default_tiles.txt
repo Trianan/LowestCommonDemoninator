@@ -1,0 +1,6 @@
+ |0,0,0|void|False|1000|'Absence of space-time.'
+^|113,142,63|grass|True|0|'Nice soft bluegrass.'
+~|30,144,255|shallow water|False|0|'Clean water no deeper than your waist.'
+#|79,109,126|stone wall|False|0|'A wall made of natural stone blocks.'
+%|244,164,96|shore sand|True|0|Rough sand littered with sticks and pebbles.
+&|19,78,19|oak tree|False|0|A sturdy oak tree.
