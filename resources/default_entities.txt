@@ -1,0 +1,3 @@
+@|0,0,255|villager|15|3|2|human|A citizen of the Kingdom.
+@|0,255,0|zombie|20|2|2|undead|One who has succumbed to demons.
+X|255,0,0|demon|50|3|5|undead|A resident of Hell.

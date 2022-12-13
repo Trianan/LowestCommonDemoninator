@@ -25,7 +25,7 @@
 // FOLIAGE:
 &|19,78,19|oak tree|False|0|A sturdy oak tree.
 &|0,99,66|mahogany tree|False|0|An elegant magohany tree.
-*|122,77,201|lavender|True|0|A path of soothing lavender.
+*|122,77,201|lavender|True|0|A patch of soothing lavender.
 *|240,48,70|poppy|True|0|A patch of crimson poppies.
 
 // ROADS:
