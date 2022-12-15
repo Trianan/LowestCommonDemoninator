@@ -1,3 +1,11 @@
-@|0,0,255|villager|15|3|2|human|A citizen of the Kingdom.
-@|0,255,0|zombie|20|2|2|undead|One who has succumbed to demons.
-X|255,0,0|demon|50|3|5|undead|A resident of Hell.
+// BASIC ENTITIES:
+E|M|255,255,0|campfire|True|Heals the body and soul of those near it.
+
+// CONTAINERS:
+C|H|255,0,255|oak chest|True|A finely-crafted oak chest.
+C|U|0,255,255|oak barrel|True|A barrel made from oak staves.
+
+// MOBS:
+M|@|0,0,255|villager|Realm|10|2|1|True|A citizen of the Realm.
+M|@|0,255,0|zombie|Hell|15|1|5|True|A victim of the demonic invasion.
+M|X|255,0,0|demon|Hell|30|5|10|True|A resident of Hell.

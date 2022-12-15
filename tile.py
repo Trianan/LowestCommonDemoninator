@@ -3,12 +3,12 @@ from colour_printer import fg, bg, util
 
 class Tile:
     '''A representation of a single tile.'''
-    def __init__(self, symbol, colour, name, position, is_ground, damage, description=''):
+    def __init__(self, symbol, colour, name, position, occupiable, damage, description=''):
         self.symbol = symbol
         self.colour = colour # (R, G, B)
         self.name = name
         self.position = position # (row, column)
-        self.ground = is_ground
+        self.occupiable = occupiable
         self.damage = damage
         self.description = description
         self.occupying_entity = None
@@ -32,7 +32,7 @@ class Tile:
             self.colour,
             self.name,
             position, # Must be given new position as tuple.
-            self.ground,
+            self.occupiable,
             self.damage,
             self.description
         )
@@ -42,7 +42,7 @@ class Tile:
         print(
             f"\t\t{self}\n" + 
             f"\t{self.name}\n" + 
-            f"\tis_ground: {self.ground}\n" + 
+            f"\toccupiable: {self.occupiable}\n" + 
             f"\tDPT: {self.damage}\n" + 
             f"\tDescription:\n\t\t{self.description}\n"
         )
@@ -50,6 +50,7 @@ class Tile:
     def occupy(self, entity):
         if not self.occupying_entity:
             self.occupying_entity = entity
+            self.occupiable = False
             return True
         else: return False
 

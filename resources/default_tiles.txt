@@ -4,10 +4,14 @@
 // GRASSES:
 ,|113,142,63|grass|True|0|Nice soft bluegrass.
 
-// WATER:
-~|30,144,255|shallow water|False|0|Clean water no deeper than your waist.
+// LIQUIDS:
+~|30,144,255|shallow water|True|0|Clean water no deeper than your waist.
 ~|30,74,229|water|False|0|Clean water past your head.
 ~|30,16,168|deep water|False|0|Clean water. You cannot see the bottom.
+
+~|255,85,0|shallow magma|True|100|Glowing magma no deeper than your waist.
+~|201,30,0|magma|False|100|Ember-bright magma.
+~|150,10,0|deep magma|False|100|Magma so deep, it leads to the core.
 
 // WALLS:
 #|79,109,126|stone wall|False|0|A wall made of natural stone blocks.
@@ -15,8 +19,8 @@
 #|157,85,65|oak wall|False|0|A well-crafted oak-plank wall.
 
 // FLOORS:
--|117,50,16|oak floor|True|0|A floor crafted of fine oak planks.
--|105,45,39|mahogany floor|True|0|A floor built of rough mahogany boards.
+=|117,50,16|oak floor|True|0|A floor crafted of fine oak planks.
+=|105,45,39|mahogany floor|True|0|A floor built of rough mahogany boards.
 
 // SEDIMENTS:
 %|244,164,96|shore sand|True|0|Rough sand littered with sticks and pebbles.
@@ -29,7 +33,7 @@
 *|240,48,70|poppy|True|0|A patch of crimson poppies.
 
 // ROADS:
-o|59,73,94|stone path|True|0|A weathered stone path.
++|59,73,94|stone path|True|0|A weathered stone path.
 
 // DECORATION:
 _|69,38,34|farm field|True|0|A freshly-tilled farm field.
